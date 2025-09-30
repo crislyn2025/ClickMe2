@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native'
 import { useRouter, Stack } from 'expo-router'
 
 export default function Home() {
@@ -10,45 +10,68 @@ export default function Home() {
       {/* Hide the default header that shows "Index" */}
       <Stack.Screen options={{ headerShown: false }} />
 
-      <SafeAreaView style={styles.safe}>
-        <View style={styles.container}>
-          {/* Logo / Brand */}
-          <Text style={styles.brand}>Clickme</Text>
-          <Text style={styles.tagline}>Post. Connect. Inspire.</Text>
+      <ImageBackground
+        source={require('../assets/images/background.png')}
+        style={styles.backgroundImage}
+        resizeMode="cover"
+      >
+        <SafeAreaView style={styles.safe}>
+          <View style={styles.container}>
+            {/* Logo Image */}
+            <Image
+              source={require('../assets/images/clickmelogo.png')}
+              style={styles.logo}
+              resizeMode="contain"
+            />
 
-          {/* Login button */}
-          <TouchableOpacity
-            style={[styles.primary, styles.shadowPrimary]}
-            onPress={() => router.push('/login')}
-            accessibilityLabel="Go to Login"
-          >
-            <Text style={styles.primaryText}>Login</Text>
-          </TouchableOpacity>
+            {/* Logo / Brand */}
+            <Text style={styles.brand}>Clickme</Text>
+            <Text style={styles.tagline}>Post. Connect. Inspire.</Text>
 
-          {/* Signup button */}
-          <TouchableOpacity
-            style={[styles.secondary, styles.shadowSecondary]}
-            onPress={() => router.push('/signup')}
-            accessibilityLabel="Go to Signup"
-          >
-            <Text style={styles.secondaryText}>Sign up</Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
+            {/* Login button */}
+            <TouchableOpacity
+              style={[styles.primary, styles.shadowPrimary]}
+              onPress={() => router.push('/login')}
+              accessibilityLabel="Go to Login"
+            >
+              <Text style={styles.primaryText}>Login</Text>
+            </TouchableOpacity>
+
+            {/* Signup button */}
+            <TouchableOpacity
+              style={[styles.secondary, styles.shadowSecondary]}
+              onPress={() => router.push('/signup')}
+              accessibilityLabel="Go to Signup"
+            >
+              <Text style={styles.secondaryText}>Sign up</Text>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+      </ImageBackground>
     </>
   )
 }
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
   safe: {
     flex: 1,
-    backgroundColor: '#fde2e4', // 🌸 light pastel pink background
+    backgroundColor: 'transparent', // Changed to transparent to show background
   },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    marginBottom: 24,
   },
   brand: {
     fontSize: 48,

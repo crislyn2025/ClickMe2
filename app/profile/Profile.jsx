@@ -34,6 +34,12 @@ export default function Profile() {
         <TouchableOpacity
           style={[styles.primary, { backgroundColor: '#f10788', marginTop: 12 }]}
         >
+          <Text style={styles.primaryText}>Follow</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.primary, { backgroundColor: '#f10788', marginTop: 12 }]}
+        >
           <Text style={styles.primaryText}>Photos</Text>
         </TouchableOpacity>
 
